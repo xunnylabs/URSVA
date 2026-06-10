@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | URSVA</title>
+    <meta
+      name="description"
+      content="Book a free consultation with URSVA to discuss virtual support, operations help, workflow cleanup, and automation."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../index.html" aria-label="URSVA home">
+        <img src="../assets/images/ursva-logo.png" alt="URSVA logo" />
+        <span><strong>URSVA</strong><small>Unity Resource Solutions</small></span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="../index.html">Home</a>
+        <div class="nav-item services-menu">
+          <a class="nav-link has-menu" href="services.html">Services</a>
+          <div class="mega-menu" aria-label="Services menu">
+            <div class="mega-menu-header">
+              <h2>Getting Our Services</h2>
+              <p>Choose which services you need for your team.</p>
+            </div>
+            <div class="mega-service-grid">
+              <a class="mega-service-link" href="services.html#core-support">
+                <span class="mini-icon blue"></span>
+                <span><strong>Core Support</strong><small>Daily admin, inbox, scheduling, and follow-ups.</small></span>
+                <em></em>
+              </a>
+              <a class="mega-service-link" href="services.html#coordination">
+                <span class="mini-icon green"></span>
+                <span><strong>Client Coordination</strong><small>Referral intake, records, tracking, and updates.</small></span>
+                <em></em>
+              </a>
+              <a class="mega-service-link" href="services.html#operations">
+                <span class="mini-icon pink"></span>
+                <span><strong>Operations Support</strong><small>Workflow visibility, reporting, and revenue support.</small></span>
+                <em></em>
+              </a>
+              <a class="mega-service-link" href="services.html#automation">
+                <span class="mini-icon dark"></span>
+                <span><strong>Workflow Automation</strong><small>Custom trackers, spreadsheets, and process cleanup.</small></span>
+                <em></em>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="active" href="contact.html">Contact</a>
+      </nav>
+      <a class="header-cta" href="contact.html">Book Consultation</a>
+    </header>
+
+    <main>
+      <section class="page-hero contact-hero">
+        <p class="eyebrow">Contact</p>
+        <h1>Book a free consultation.</h1>
+        <p>
+          Tell URSVA where things feel behind or harder than they should be.
+          We will take an honest look at what is going on and where support would
+          actually make a difference.
+        </p>
+      </section>
+
+      <section class="section contact-layout">
+        <form class="contact-form" action="#" method="post">
+          <div class="form-grid">
+            <label>
+              Name
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label>
+              Company
+              <input type="text" name="company" autocomplete="organization" />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label>
+              What kind of support do you need?
+              <select name="support_type" required>
+                <option value="">Select one</option>
+                <option value="core-support">Core support</option>
+                <option value="client-coordination">Client or case coordination</option>
+                <option value="operations-support">Operations or revenue support</option>
+                <option value="automation">Automation and workflow development</option>
+                <option value="not-sure">Not sure yet</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Tell us about your workflow, current pain points, or growth goals
+            <textarea name="message" rows="7" required></textarea>
+          </label>
+          <button class="button primary" type="submit">Get Started</button>
+        </form>
+
+        <aside class="contact-aside">
+          <h2>What to expect</h2>
+          <p>No pressure, no sales pitch. The consultation is meant to clarify what support would help most.</p>
+          <ul class="check-list">
+            <li>Review your current workload</li>
+            <li>Identify repetitive or risky bottlenecks</li>
+            <li>Discuss support and automation options</li>
+            <li>Decide whether URSVA is a practical fit</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>URSVA | Unity Resource Solutions</p>
+      <p>Supportive, reliable operations support for growing businesses.</p>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
