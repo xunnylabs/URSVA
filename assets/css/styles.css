@@ -340,6 +340,34 @@ main {
   order: 2;
 }
 
+.hero-image-card {
+  position: relative;
+  min-height: 560px;
+  margin: 0;
+  overflow: hidden;
+  background: #06101d;
+  border: 1px solid rgba(60, 125, 194, 0.28);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.hero-image-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 22, 34, 0.04), rgba(16, 22, 34, 0.28)),
+    linear-gradient(135deg, rgba(57, 163, 49, 0.12), rgba(247, 66, 167, 0.08));
+  pointer-events: none;
+}
+
+.hero-image-card img {
+  width: 100%;
+  height: 100%;
+  min-height: 560px;
+  object-fit: cover;
+}
+
 .eyebrow {
   margin: 0 0 0.9rem;
   color: var(--green-dark);
@@ -397,6 +425,16 @@ h3 {
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: 2rem;
+}
+
+@keyframes tickerMove {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .ops-board {
@@ -479,12 +517,34 @@ h3 {
 }
 
 .logo-band {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.7rem;
-  width: min(1180px, calc(100% - 32px));
+  width: min(1180px, calc(100% - 64px));
   margin: 0 auto 2rem;
+  overflow: hidden;
+  padding: 1rem 0;
+  border-block: 1px solid rgba(60, 125, 194, 0.18);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 999px;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 9%,
+    #000 91%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 9%,
+    #000 91%,
+    transparent 100%
+  );
+}
+
+.logo-band-track {
+  display: flex;
+  width: max-content;
+  gap: 0.9rem;
+  animation: tickerMove 24s linear infinite;
 }
 
 .logo-band span,
@@ -960,6 +1020,11 @@ textarea {
     min-height: 430px;
   }
 
+  .hero-image-card,
+  .hero-image-card img {
+    min-height: 430px;
+  }
+
   .cards.four,
   .cards.three,
   .stat-grid {
@@ -1011,6 +1076,40 @@ textarea {
   .stat-grid,
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-image-card,
+  .hero-image-card img {
+    min-height: 320px;
+  }
+
+  .logo-band {
+    width: min(100% - 24px, 1180px);
+    padding: 0.75rem 0;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 14%,
+      #000 86%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 14%,
+      #000 86%,
+      transparent 100%
+    );
+  }
+
+  .logo-band-track {
+    gap: 0.7rem;
+    animation-duration: 24s;
+  }
+
+  .logo-band span {
+    font-size: 0.88rem;
+    padding: 0.72rem 0.9rem;
   }
 
   .feature-panel,
