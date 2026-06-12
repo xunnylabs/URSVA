@@ -87,6 +87,71 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+document.querySelectorAll(".spotlight-border").forEach((card) => {
+  card.addEventListener("pointerenter", () => {
+    card.classList.add("is-hovering");
+  });
+
+  card.addEventListener("pointermove", (event) => {
+    card.classList.add("is-hovering");
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--spot-x", `${event.clientX - rect.left}px`);
+    card.style.setProperty("--spot-y", `${event.clientY - rect.top}px`);
+  });
+
+  card.addEventListener("pointerleave", () => {
+    card.classList.remove("is-hovering");
+    card.style.setProperty("--spot-x", "-9999px");
+    card.style.setProperty("--spot-y", "-9999px");
+  });
+});
+
+document.querySelectorAll(".pricing-button, .mega-service-link").forEach((element) => {
+  element.addEventListener("pointerenter", () => {
+    element.classList.add("is-hovering");
+  });
+
+  element.addEventListener("pointermove", () => {
+    element.classList.add("is-hovering");
+  });
+
+  element.addEventListener("pointerleave", () => {
+    element.classList.remove("is-hovering");
+  });
+});
+
+const fadeUpElements = document.querySelectorAll(".fade-up");
+
+if ("IntersectionObserver" in window) {
+  const fadeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  fadeUpElements.forEach((element) => fadeObserver.observe(element));
+
+  window.setTimeout(() => {
+    fadeUpElements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      const isInView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+
+      if (isInView) {
+        element.classList.add("is-visible");
+        fadeObserver.unobserve(element);
+      }
+    });
+  }, 120);
+} else {
+  fadeUpElements.forEach((element) => element.classList.add("is-visible"));
+}
+
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
