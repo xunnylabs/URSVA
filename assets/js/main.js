@@ -10,6 +10,79 @@ if (toggle && nav) {
 
 const contactForm = document.querySelector(".contact-form");
 
+const isPagesPath = window.location.pathname.includes("/pages/");
+const linkPrefix = isPagesPath ? "" : "pages/";
+const homeHref = isPagesPath ? "../index.html" : "index.html";
+const pageLinks = [
+  { label: "Home", href: homeHref, key: "home" },
+  { label: "Services", href: `${linkPrefix}services.html`, key: "services" },
+  { label: "How It Works", href: `${linkPrefix}how-it-works.html`, key: "how-it-works" },
+  { label: "Pricing", href: `${linkPrefix}pricing.html`, key: "pricing" },
+  { label: "Contact", href: `${linkPrefix}contact.html`, key: "contact" },
+];
+
+const getActivePageKey = () => {
+  const path = window.location.pathname;
+
+  if (path.includes("services.html")) return "services";
+  if (path.includes("how-it-works.html")) return "how-it-works";
+  if (path.includes("pricing.html")) return "pricing";
+  if (path.includes("contact.html")) return "contact";
+  return "home";
+};
+
+const floatingNav = document.createElement("div");
+floatingNav.className = "floating-nav";
+floatingNav.innerHTML = `
+  <div class="floating-nav-panel" id="floatingNavPanel">
+    ${pageLinks
+      .map(
+        (link) =>
+          `<a href="${link.href}" class="${link.key === getActivePageKey() ? "is-active" : ""}">${link.label}</a>`
+      )
+      .join("")}
+    <a class="floating-nav-cta" href="${linkPrefix}contact.html">Book Consultation</a>
+  </div>
+  <button class="floating-nav-toggle" type="button" aria-expanded="false" aria-controls="floatingNavPanel">
+    <span>Menu</span>
+    <span class="floating-nav-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+`;
+
+document.body.appendChild(floatingNav);
+
+const floatingToggle = floatingNav.querySelector(".floating-nav-toggle");
+const floatingPanel = floatingNav.querySelector(".floating-nav-panel");
+
+const setFloatingNavOpen = (isOpen) => {
+  floatingNav.classList.toggle("is-open", isOpen);
+  floatingToggle?.setAttribute("aria-expanded", String(isOpen));
+
+  if (floatingPanel) {
+    floatingPanel.style.setProperty("opacity", isOpen ? "1" : "0", "important");
+    floatingPanel.style.setProperty("transform", isOpen ? "translateY(0) scale(1)" : "translateY(14px) scale(0.96)", "important");
+    floatingPanel.style.setProperty("pointer-events", isOpen ? "auto" : "none", "important");
+  }
+};
+
+if (floatingToggle) {
+  floatingToggle.addEventListener("click", () => {
+    setFloatingNavOpen(!floatingNav.classList.contains("is-open"));
+  });
+}
+
+document.addEventListener("click", (event) => {
+  if (!floatingNav.contains(event.target)) {
+    setFloatingNavOpen(false);
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    setFloatingNavOpen(false);
+  }
+});
+
 document.querySelectorAll("[data-animated-heading]").forEach((heading) => {
   const text = heading.dataset.headingLines || heading.textContent || "";
   const fragment = document.createDocumentFragment();
@@ -43,8 +116,16 @@ document.querySelectorAll("[data-animated-heading]").forEach((heading) => {
   }, 80);
 });
 
-document.querySelectorAll(".home-header .site-nav").forEach((navElement) => {
-  const pill = navElement.querySelector(".nav-glass-pill");
+document.querySelectorAll(".site-header .site-nav").forEach((navElement) => {
+  let pill = navElement.querySelector(".nav-glass-pill");
+
+  if (!pill) {
+    pill = document.createElement("span");
+    pill.className = "nav-glass-pill";
+    pill.setAttribute("aria-hidden", "true");
+    navElement.prepend(pill);
+  }
+
   const navLinks = navElement.querySelectorAll(":scope > a, :scope > .nav-item > .nav-link");
   const activeLink = navElement.querySelector(":scope > a.active, :scope > .nav-item > .nav-link.active") || navLinks[0];
 
