@@ -11,13 +11,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Public+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header home-header">
       <a class="brand" href="index.html" aria-label="URSVA home">
         <img src="assets/images/ursva-logo.png" alt="URSVA logo" />
         <span>
@@ -32,6 +32,7 @@
       </button>
 
       <nav class="site-nav" aria-label="Primary navigation">
+        <span class="nav-glass-pill" aria-hidden="true"></span>
         <a class="active" href="index.html">Home</a>
         <div class="nav-item services-menu">
           <a class="nav-link has-menu" href="pages/services.html">Services</a>
@@ -73,25 +74,41 @@
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero-media">
-          <figure class="hero-image-card">
-            <img
-              src="assets/images/Virtual_Assistants_AI.webp"
-              alt="AI virtual assistants supporting business operations"
-            />
-          </figure>
-        </div>
+      <section class="hero hero-video-section">
+        <video
+          class="hero-bg-video"
+          autoplay
+          loop
+          muted
+          playsinline
+          aria-hidden="true"
+        >
+          <source
+            src="assets/videos/kling_hero_background.mp4"
+            type="video/mp4"
+          />
+        </video>
 
-        <div class="hero-copy">
-          <p class="eyebrow">Effortless Support, Limitless Potential</p>
-          <h1>Scale your operations without overhiring.</h1>
-          <p>
-            Structured support and systems that actually keep your business moving.
-          </p>
-          <div class="button-row">
-            <a class="button primary" href="pages/contact.html">Book a Free Consultation</a>
-            <a class="button secondary" href="pages/services.html">Explore Services</a>
+        <div class="hero-content-grid">
+          <div class="hero-copy">
+            <h1
+              class="animated-heading"
+              data-animated-heading
+              data-heading-lines="Scale your operations|without overhiring."
+            >Scale your operations without overhiring.</h1>
+            <p class="hero-fade hero-fade-delay-1">
+              Structured support and systems that actually keep your business moving.
+            </p>
+            <div class="button-row hero-fade hero-fade-delay-2">
+              <a class="button primary" href="pages/contact.html">Book a Free Consultation</a>
+              <a class="button secondary liquid-glass" href="pages/services.html">Explore Services</a>
+            </div>
+          </div>
+
+          <div class="hero-tag hero-fade hero-fade-delay-3">
+            <div class="liquid-glass">
+              <span>Effortless Support, Limitless Potential</span>
+            </div>
           </div>
         </div>
       </section>
@@ -160,7 +177,7 @@
         </div>
         <div class="stat-grid">
           <div>
-            <strong>24-48 hrs</strong>
+            <strong>2 days</strong>
             <span>Fast intake and workflow turnaround</span>
           </div>
           <div>
@@ -196,6 +213,6 @@
       <p>Supportive, reliable operations support for growing businesses.</p>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=glass-nav-5"></script>
   </body>
 </html>

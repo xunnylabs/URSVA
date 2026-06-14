@@ -10,6 +10,93 @@ if (toggle && nav) {
 
 const contactForm = document.querySelector(".contact-form");
 
+document.querySelectorAll("[data-animated-heading]").forEach((heading) => {
+  const text = heading.dataset.headingLines || heading.textContent || "";
+  const fragment = document.createDocumentFragment();
+  let index = 0;
+
+  text.split("|").forEach((line, lineIndex, lines) => {
+    const lineElement = document.createElement("span");
+    lineElement.className = "heading-line";
+
+    Array.from(line).forEach((char) => {
+      const character = document.createElement("span");
+      character.className = "char";
+      character.style.setProperty("--char-index", index);
+      character.textContent = char === " " ? "\u00a0" : char;
+      lineElement.appendChild(character);
+      index += 1;
+    });
+
+    fragment.appendChild(lineElement);
+
+    if (lineIndex < lines.length - 1) {
+      index += 1;
+    }
+  });
+
+  heading.textContent = "";
+  heading.appendChild(fragment);
+
+  window.setTimeout(() => {
+    heading.classList.add("is-visible");
+  }, 80);
+});
+
+document.querySelectorAll(".home-header .site-nav").forEach((navElement) => {
+  const pill = navElement.querySelector(".nav-glass-pill");
+  const navLinks = navElement.querySelectorAll(":scope > a, :scope > .nav-item > .nav-link");
+  const activeLink = navElement.querySelector(":scope > a.active, :scope > .nav-item > .nav-link.active") || navLinks[0];
+
+  if (!pill || !navLinks.length || !activeLink) {
+    return;
+  }
+
+  const movePillTo = (target) => {
+    const navRect = navElement.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+
+    pill.style.top = `${targetRect.top - navRect.top}px`;
+    pill.style.width = `${targetRect.width}px`;
+    pill.style.height = `${targetRect.height}px`;
+    pill.style.opacity = "1";
+    pill.style.transform = `translate3d(${targetRect.left - navRect.left}px, 0, 0)`;
+  };
+
+  const returnToActive = () => movePillTo(activeLink);
+
+  window.setTimeout(returnToActive, 0);
+  window.addEventListener("resize", returnToActive);
+
+  navLinks.forEach((link) => {
+    link.addEventListener("pointerenter", () => movePillTo(link));
+    link.addEventListener("mouseenter", () => movePillTo(link));
+    link.addEventListener("focus", () => movePillTo(link));
+  });
+
+  navElement.addEventListener("pointerleave", returnToActive);
+  navElement.addEventListener("mouseleave", returnToActive);
+  navElement.addEventListener("pointerover", (event) => {
+    const link = event.target.closest("a");
+    if (link && navElement.contains(link)) {
+      movePillTo(link);
+    }
+  });
+  navElement.addEventListener("mouseover", (event) => {
+    const link = event.target.closest("a");
+    if (link && navElement.contains(link)) {
+      movePillTo(link);
+    }
+  });
+  navElement.addEventListener("focusout", () => {
+    window.setTimeout(() => {
+      if (!navElement.contains(document.activeElement)) {
+        returnToActive();
+      }
+    }, 0);
+  });
+});
+
 document.querySelectorAll(".services-menu").forEach((menu) => {
   let closeTimer;
   const trigger = menu.querySelector(".nav-link");
@@ -106,7 +193,7 @@ document.querySelectorAll(".spotlight-border").forEach((card) => {
   });
 });
 
-document.querySelectorAll(".pricing-button, .mega-service-link").forEach((element) => {
+document.querySelectorAll(".pricing-button, .mega-service-link, .hero .button").forEach((element) => {
   element.addEventListener("pointerenter", () => {
     element.classList.add("is-hovering");
   });
