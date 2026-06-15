@@ -116,6 +116,46 @@ document.querySelectorAll("[data-animated-heading]").forEach((heading) => {
   }, 80);
 });
 
+document.querySelectorAll("[data-hero-tabs]").forEach((tabGroup) => {
+  const tabs = Array.from(tabGroup.querySelectorAll("[data-hero-tab]"));
+  const panels = Array.from(document.querySelectorAll("[data-hero-panel]"));
+  const tabOrder = tabs.map((tab) => tab.dataset.heroTab);
+  let activeIndex = Math.max(0, tabOrder.indexOf(tabs.find((tab) => tab.classList.contains("is-active"))?.dataset.heroTab));
+  let autoCycle;
+
+  const activateTab = (key) => {
+    activeIndex = Math.max(0, tabOrder.indexOf(key));
+
+    tabs.forEach((tab) => {
+      tab.classList.toggle("is-active", tab.dataset.heroTab === key);
+    });
+
+    panels.forEach((panel) => {
+      panel.classList.toggle("is-active", panel.dataset.heroPanel === key);
+    });
+  };
+
+  const startAutoCycle = () => {
+    window.clearInterval(autoCycle);
+    autoCycle = window.setInterval(() => {
+      activeIndex = (activeIndex + 1) % tabOrder.length;
+      activateTab(tabOrder[activeIndex]);
+    }, 4000);
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      activateTab(tab.dataset.heroTab);
+      startAutoCycle();
+    });
+  });
+
+  if (tabOrder.length) {
+    activateTab(tabOrder[activeIndex]);
+    startAutoCycle();
+  }
+});
+
 document.querySelectorAll(".site-header .site-nav").forEach((navElement) => {
   let pill = navElement.querySelector(".nav-glass-pill");
 
@@ -321,12 +361,41 @@ if ("IntersectionObserver" in window) {
 }
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
+  const serviceChips = contactForm.querySelectorAll(".service-chip");
+  const selectedServicesInput = contactForm.querySelector("input[name='selected_services']");
+  const submitButton = contactForm.querySelector(".contact-submit");
+
+  const updateSelectedServices = () => {
+    const selectedServices = Array.from(serviceChips)
+      .filter((chip) => chip.classList.contains("is-selected"))
+      .map((chip) => chip.textContent.trim());
+
+    if (selectedServicesInput) {
+      selectedServicesInput.value = selectedServices.join(", ");
+    }
+  };
+
+  serviceChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      chip.classList.toggle("is-selected");
+      updateSelectedServices();
+    });
+  });
+
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+
+    await new Promise((resolve) => {
+      window.setTimeout(resolve, 1000);
+    });
+
     contactForm.classList.add("submitted");
-    const button = contactForm.querySelector("button");
-    if (button) {
-      button.textContent = "Request Ready";
+    if (submitButton) {
+      submitButton.textContent = "Sent";
     }
   });
 }

@@ -8,6 +8,10 @@
       name="description"
       content="URSVA combines automation and skilled virtual support to help small businesses build efficient, scalable operations."
     />
+    <meta
+      name="keywords"
+      content="virtual assistant operations support, workflow automation, business process support, remote admin support, client coordination, scalable operations, URSVA"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +20,7 @@
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body>
+  <body class="home-page">
     <header class="site-header home-header">
       <a class="brand" href="index.html" aria-label="URSVA home">
         <img src="assets/images/ursva-logo.png" alt="URSVA logo" />
@@ -74,54 +78,117 @@
     </header>
 
     <main>
-      <section class="hero hero-video-section">
-        <video
-          class="hero-bg-video"
-          autoplay
-          loop
-          muted
-          playsinline
-          aria-hidden="true"
-        >
-          <source
-            src="assets/videos/kling_hero_background.mp4"
-            type="video/mp4"
-          />
-        </video>
-
-        <div class="hero-content-grid">
-          <div class="hero-copy">
-            <h1
-              class="animated-heading"
-              data-animated-heading
-              data-heading-lines="Scale your operations|without overhiring."
-            >Scale your operations without overhiring.</h1>
-            <p class="hero-fade hero-fade-delay-1">
-              Structured support and systems that actually keep your business moving.
-            </p>
-            <div class="button-row hero-fade hero-fade-delay-2">
-              <a class="button primary" href="pages/contact.html">Book a Free Consultation</a>
-              <a class="button secondary liquid-glass" href="pages/services.html">Explore Services</a>
-            </div>
+      <section class="hero stellar-hero">
+        <div class="stellar-hero-inner">
+          <div class="stellar-rating animate-fade-in-up" style="animation-delay: 0.1s; opacity: 0;">
+            <span class="rating-icon">✦</span>
+            <span>Trusted support for lean teams ready to scale smarter</span>
           </div>
 
-          <div class="hero-tag hero-fade hero-fade-delay-3">
-            <div class="liquid-glass">
-              <span>Effortless Support, Limitless Potential</span>
-            </div>
+          <h1 class="stellar-heading animate-fade-in-up" style="animation-delay: 0.2s; opacity: 0;">
+            Scale your operations
+            <span>without overhiring.</span>
+          </h1>
+
+          <p class="stellar-subheading animate-fade-in-up" style="animation-delay: 0.3s; opacity: 0;">
+            Structured support, client coordination, and workflow automation that
+            keep your business moving without adding unnecessary headcount.
+          </p>
+
+          <div class="stellar-actions animate-fade-in-up" style="animation-delay: 0.4s; opacity: 0;">
+            <a class="button primary" href="pages/contact.html">Book a Free Consultation</a>
+          </div>
+
+          <div class="stellar-tabs animate-fade-in-up" data-hero-tabs style="animation-delay: 0.5s; opacity: 0;">
+            <button class="is-active" type="button" data-hero-tab="core-support"><span>▥</span> Core Support</button>
+            <button type="button" data-hero-tab="coordination"><span>◫</span> Client Coordination</button>
+            <button type="button" data-hero-tab="operations"><span>✓</span> Operations Support</button>
+            <button type="button" data-hero-tab="automation"><span>↗</span> Workflow Automation</button>
+          </div>
+
+          <div class="stellar-demo animate-fade-in-up" data-hero-demo style="animation-delay: 0.6s; opacity: 0;">
+            <img
+              src="assets/images/ursva-virtual-assistant-operations-automation-dashboard.png"
+              alt="URSVA virtual assistant operations automation dashboard for scalable business support"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div class="stellar-demo-scrim"></div>
+
+            <article class="hero-tab-overlay is-active" data-hero-panel="core-support">
+              <p>Core Support</p>
+              <h2>Keep daily admin moving without missed follow-through</h2>
+              <div class="overlay-progress"><span style="width: 25%;"></span></div>
+              <ul>
+                <li>Call handling and reception</li>
+                <li>Client communication and follow-ups</li>
+                <li>Scheduling and calendar support</li>
+                <li>Email management and data entry</li>
+              </ul>
+            </article>
+
+            <article class="hero-tab-overlay" data-hero-panel="coordination">
+              <p>Client Coordination</p>
+              <h2>Organize intake, records, updates, and active client files</h2>
+              <div class="overlay-progress orange"><span style="width: 67%;"></span></div>
+              <div class="overlay-metrics">
+                <span><strong>01</strong> Referral intake</span>
+                <span><strong>02</strong> Records collection</span>
+                <span><strong>03</strong> Status tracking</span>
+                <span><strong>04</strong> System entry</span>
+              </div>
+            </article>
+
+            <article class="hero-tab-overlay" data-hero-panel="operations">
+              <p>Operations Support</p>
+              <h2>Improve visibility across the work that keeps revenue moving</h2>
+              <div class="overlay-success">Workflow visibility, reporting, and revenue support</div>
+              <ul>
+                <li>Case or workflow lifecycle tracking</li>
+                <li>Payment and follow-up support</li>
+                <li>Reporting and analytics</li>
+                <li>Spreadsheet systems and optimization</li>
+              </ul>
+            </article>
+
+            <article class="hero-tab-overlay" data-hero-panel="automation">
+              <p>Workflow Automation</p>
+              <h2>Reduce repetitive work with practical, scalable systems</h2>
+              <ul>
+                <li>Advanced spreadsheet automation</li>
+                <li>Custom workflow tools and trackers</li>
+                <li>Process cleanup and optimization</li>
+                <li>Ongoing system improvements</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="stellar-partners animate-fade-in-up" aria-label="URSVA support areas" style="animation-delay: 0.7s; opacity: 0;">
+            <span>CORE SUPPORT</span>
+            <span>CLIENT COORDINATION</span>
+            <span>OPERATIONS</span>
+            <span>WORKFLOW AUTOMATION</span>
+            <span>SMALL TEAMS</span>
           </div>
         </div>
       </section>
 
-      <section class="logo-band" aria-label="URSVA positioning">
-        <div class="logo-band-track">
-          <span>Human support where judgment matters</span>
-          <span>Automation where repetition slows you down</span>
-          <span>Flexible systems for smaller teams</span>
-          <span>Human support where judgment matters</span>
-          <span>Automation where repetition slows you down</span>
-          <span>Flexible systems for smaller teams</span>
-        </div>
+      <section class="feature-band" aria-label="URSVA operating advantages">
+        <article>
+          <span class="mini-icon blue"></span>
+          <h2>Human support where judgment matters</h2>
+          <p>Responsive help for clients, schedules, inboxes, and follow-through that should not be left to automation alone.</p>
+        </article>
+        <article>
+          <span class="mini-icon pink"></span>
+          <h2>Automation where repetition slows you down</h2>
+          <p>Workflow cleanup, trackers, and repeatable systems that reduce manual steps without making your business feel robotic.</p>
+        </article>
+        <article>
+          <span class="mini-icon green"></span>
+          <h2>Flexible systems for smaller teams</h2>
+          <p>Support that scales with real workload, giving you structure without forcing a full-time hire too early.</p>
+        </article>
       </section>
 
       <section class="section two-column">
@@ -213,6 +280,6 @@
       <p>Supportive, reliable operations support for growing businesses.</p>
     </footer>
 
-    <script src="assets/js/main.js?v=embedded-floating-nav-3"></script>
+    <script src="assets/js/main.js?v=onboarding-process"></script>
   </body>
 </html>

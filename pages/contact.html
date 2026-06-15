@@ -8,10 +8,14 @@
       name="description"
       content="Book a free consultation with URSVA to discuss virtual support, operations help, workflow cleanup, and automation."
     />
+    <meta
+      name="keywords"
+      content="book virtual assistant consultation, URSVA contact, operations support consultation, workflow automation consultation, client coordination support, remote business support"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&family=Public+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/styles.css" />
@@ -66,60 +70,93 @@
     </header>
 
     <main>
-      <section class="page-hero contact-hero">
-        <p class="eyebrow">Contact</p>
-        <h1>Book a free consultation.</h1>
-        <p>
-          Tell URSVA where things feel behind or harder than they should be.
-          We will take an honest look at what is going on and where support would
-          actually make a difference.
-        </p>
-      </section>
+      <section class="contact-showcase">
+        <video
+          class="contact-bg-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          aria-hidden="true"
+        >
+          <source
+            src="../assets/videos/ursva-contact-consultation-virtual-assistant-operations-video.mp4"
+            type="video/mp4"
+          />
+          URSVA virtual assistant operations support consultation background video.
+        </video>
+        <div class="contact-showcase-overlay"></div>
 
-      <section class="section contact-layout">
-        <form class="contact-form" action="#" method="post">
-          <div class="form-grid">
-            <label>
-              Name
-              <input type="text" name="name" autocomplete="name" required />
-            </label>
-            <label>
-              Company
-              <input type="text" name="company" autocomplete="organization" />
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" autocomplete="email" required />
-            </label>
-            <label>
-              What kind of support do you need?
-              <select name="support_type" required>
-                <option value="">Select one</option>
-                <option value="core-support">Core support</option>
-                <option value="client-coordination">Client or case coordination</option>
-                <option value="operations-support">Operations or revenue support</option>
-                <option value="automation">Automation and workflow development</option>
-                <option value="not-sure">Not sure yet</option>
-              </select>
-            </label>
+        <div class="contact-showcase-content">
+          <div class="contact-headline">
+            <p class="eyebrow">Contact URSVA</p>
+            <h1>
+              Tell us what feels stuck, and we will help you make it
+              <span>move.</span>
+            </h1>
+            <p>
+              Share where support, coordination, or automation could make your
+              day easier. We will reply with a practical next step.
+            </p>
           </div>
-          <label>
-            Tell us about your workflow, current pain points, or growth goals
-            <textarea name="message" rows="7" required></textarea>
-          </label>
-          <button class="button primary" type="submit">Get Started</button>
-        </form>
 
-        <aside class="contact-aside">
-          <h2>What to expect</h2>
-          <p>No pressure, no sales pitch. The consultation is meant to clarify what support would help most.</p>
-          <ul class="check-list">
-            <li>Review your current workload</li>
-            <li>Identify repetitive or risky bottlenecks</li>
-            <li>Discuss support and automation options</li>
-            <li>Decide whether URSVA is a practical fit</li>
-          </ul>
-        </aside>
+          <form class="contact-form contact-card" action="#" method="post">
+            <div class="contact-form-content">
+              <div>
+                <h2>Say hello</h2>
+                <p>Book a free consultation with URSVA.</p>
+              </div>
+
+              <div class="contact-quick-row">
+                <div>
+                  <small>Drop us a line</small>
+                  <a href="mailto:admin@ursva.com">admin@ursva.com</a>
+                </div>
+                <div class="social-row" aria-label="URSVA social links">
+                  <a href="#" aria-label="Twitter">X</a>
+                  <a href="#" aria-label="Community">●</a>
+                  <a href="#" aria-label="Instagram">◎</a>
+                  <a href="#" aria-label="LinkedIn">in</a>
+                </div>
+              </div>
+
+              <div class="or-divider"><span></span><em>OR</em><span></span></div>
+
+              <label>
+                Tell us about your operation
+                <div class="contact-inline-fields">
+                  <input type="text" name="name" autocomplete="name" placeholder="Full name" required />
+                  <input type="email" name="email" autocomplete="email" placeholder="Email" required />
+                </div>
+              </label>
+
+              <label>
+                What are you looking to build or improve?
+                <textarea name="message" rows="4" placeholder="Tell us about your workflow, current pain points, or growth goals..." required></textarea>
+              </label>
+
+              <div class="service-chip-group" data-service-chips>
+                <span>I need help with...</span>
+                <div>
+                  <button class="service-chip" type="button">Core Support</button>
+                  <button class="service-chip" type="button">Client Coordination</button>
+                  <button class="service-chip" type="button">Operations Support</button>
+                  <button class="service-chip" type="button">Workflow Automation</button>
+                  <button class="service-chip" type="button">Not Sure Yet</button>
+                </div>
+              </div>
+
+              <input type="hidden" name="selected_services" value="" />
+              <button class="contact-submit" type="submit">Send my message</button>
+            </div>
+
+            <div class="contact-success" aria-live="polite">
+              <span>✓</span>
+              <h2>You're all set.</h2>
+              <p>Expect a reply within 24 hours.</p>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
 
@@ -127,6 +164,6 @@
       <p>URSVA | Unity Resource Solutions</p>
       <p>Supportive, reliable operations support for growing businesses.</p>
     </footer>
-    <script src="../assets/js/main.js?v=embedded-floating-nav-3"></script>
+    <script src="../assets/js/main.js?v=onboarding-process"></script>
   </body>
 </html>
