@@ -375,6 +375,102 @@ if ("IntersectionObserver" in window) {
   fadeUpElements.forEach((element) => element.classList.add("is-visible"));
 }
 
+document.querySelectorAll("[data-interactive-onboarding]").forEach((section) => {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const steps = Array.from(section.querySelectorAll(".onboarding-step"));
+  const visuals = Array.from(section.querySelectorAll(".onboarding-visual"));
+
+  if (!prefersReducedMotion) {
+    section.classList.add("is-animated");
+
+    const revealVisibleSteps = () => {
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+
+      steps.forEach((step) => {
+        if (step.classList.contains("is-visible")) {
+          return;
+        }
+
+        const rect = step.getBoundingClientRect();
+        const isVisible = rect.top < viewportHeight * 0.86 && rect.bottom > viewportHeight * 0.08;
+
+        if (isVisible) {
+          step.classList.add("is-visible");
+        }
+      });
+    };
+
+    if ("IntersectionObserver" in window) {
+      const stepObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              stepObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.28, rootMargin: "0px 0px -8% 0px" }
+      );
+
+      steps.forEach((step, index) => {
+        step.style.transitionDelay = `${Math.min(index * 70, 280)}ms`;
+        stepObserver.observe(step);
+      });
+    } else {
+      steps.forEach((step) => step.classList.add("is-visible"));
+    }
+
+    revealVisibleSteps();
+    window.addEventListener("scroll", revealVisibleSteps, { passive: true });
+    window.addEventListener("resize", revealVisibleSteps);
+  } else {
+    steps.forEach((step) => step.classList.add("is-visible"));
+  }
+
+  visuals.forEach((visual) => {
+    let rafId;
+
+    const resetTilt = () => {
+      visual.classList.remove("is-hovering");
+      visual.style.removeProperty("--tilt-x");
+      visual.style.removeProperty("--tilt-y");
+      visual.style.removeProperty("--tilt-shift-x");
+      visual.style.removeProperty("--tilt-shift-y");
+      visual.style.removeProperty("--scene-x");
+      visual.style.removeProperty("--scene-y");
+    };
+
+    visual.addEventListener("pointermove", (event) => {
+      if (prefersReducedMotion) {
+        return;
+      }
+
+      window.cancelAnimationFrame(rafId);
+      rafId = window.requestAnimationFrame(() => {
+        const rect = visual.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width;
+        const y = (event.clientY - rect.top) / rect.height;
+        const rotateY = (x - 0.5) * 10;
+        const rotateX = (0.5 - y) * 8;
+
+        visual.classList.add("is-hovering");
+        visual.style.setProperty("--tilt-x", `${rotateX.toFixed(2)}deg`);
+        visual.style.setProperty("--tilt-y", `${rotateY.toFixed(2)}deg`);
+        visual.style.setProperty("--tilt-shift-x", `${((x - 0.5) * 8).toFixed(1)}px`);
+        visual.style.setProperty("--tilt-shift-y", `${((y - 0.5) * 6).toFixed(1)}px`);
+        visual.style.setProperty("--scene-x", `${(x * 100).toFixed(1)}%`);
+        visual.style.setProperty("--scene-y", `${(y * 100).toFixed(1)}%`);
+      });
+    });
+
+    visual.addEventListener("pointerleave", () => {
+      window.cancelAnimationFrame(rafId);
+      resetTilt();
+    });
+  });
+});
+
 if (contactForm) {
   const serviceChips = contactForm.querySelectorAll(".service-chip");
   const selectedServicesInput = contactForm.querySelector("input[name='selected_services']");
