@@ -3,15 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Services | URSVA</title>
+    <title>Blog | URSVA</title>
     <meta
       name="description"
-      content="Explore URSVA virtual support, client coordination, operations support, and automation services."
+      content="Read URSVA insights on virtual assistant support, client coordination, workflow automation, and scalable operations for lean teams."
+    />
+    <meta
+      name="keywords"
+      content="URSVA blog, virtual assistant tips, operations support insights, workflow automation articles, client coordination, remote admin support, small business operations"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Public+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/styles.css" />
@@ -28,7 +32,7 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="../index.html">Home</a>
         <div class="nav-item services-menu">
-          <a class="nav-link active has-menu" href="services.html">Services</a>
+          <a class="nav-link has-menu" href="services.html">Services</a>
           <div class="mega-menu" aria-label="Services menu">
             <div class="mega-menu-header">
               <h2>Getting Our Services</h2>
@@ -60,79 +64,100 @@
         </div>
         <a href="how-it-works.html">How It Works</a>
         <a href="pricing.html">Pricing</a>
-        <a href="blog.html">Blog</a>
+        <a class="active" href="blog.html">Blog</a>
         <a href="contact.html">Contact</a>
       </nav>
       <a class="header-cta" href="contact.html">Book Consultation</a>
     </header>
 
     <main>
-      <section class="page-hero compact">
-        <p class="eyebrow">Services</p>
-        <h1>Support built around the work small teams actually need help with.</h1>
-        <p>
-          URSVA steps in for daily admin needs, process-heavy coordination,
-          back-office operations, and workflow improvements that reduce manual overhead.
-        </p>
+      <section class="blog-hero">
+        <div class="blog-hero-copy">
+          <p class="eyebrow">URSVA Blog</p>
+          <h1>Ideas for cleaner operations, calmer teams, and smarter support.</h1>
+          <p>
+            Practical articles on virtual assistant support, client coordination,
+            workflow cleanup, and automation for lean service businesses.
+          </p>
+        </div>
+
+        <aside class="blog-hero-card" aria-label="Featured blog focus">
+          <span class="mini-icon blue"></span>
+          <p>Featured Focus</p>
+          <h2>Scale without overhiring</h2>
+          <span>
+            Learn what to delegate, what to automate, and how to build support
+            systems before the work gets messy.
+          </span>
+        </aside>
       </section>
 
-      <section class="section service-list">
-        <article class="service-row" id="core-support">
-          <div><span class="card-icon blue"></span><h2>Core Support</h2></div>
-          <p>Keep daily operations moving without distraction, backlog, or missed follow-through.</p>
-          <ul>
-            <li>Call handling and reception</li>
-            <li>Client communication and follow-ups</li>
-            <li>Scheduling and calendar support</li>
-            <li>Email management and data entry</li>
-          </ul>
+      <section class="section blog-section">
+        <div class="blog-toolbar" aria-label="Blog categories">
+          <span>All Articles</span>
+          <span>Core Support</span>
+          <span>Coordination</span>
+          <span>Operations</span>
+          <span>Automation</span>
+        </div>
+
+        <article class="featured-post">
+          <div class="featured-post-media">
+            <span class="mini-icon pink"></span>
+            <div>
+              <p>Latest Insight</p>
+              <strong>Operations Notes</strong>
+            </div>
+          </div>
+          <div class="featured-post-copy">
+            <p class="post-meta">Operations Support · 6 min read</p>
+            <h2>How to know when your business needs support before another hire.</h2>
+            <p>
+              If work is moving only because you remember every detail, your
+              operations are already asking for structure. Here are the signs
+              that support, coordination, or workflow cleanup should come next.
+            </p>
+            <a class="text-link" href="contact.html">Talk through your support needs</a>
+          </div>
         </article>
 
-        <article class="service-row" id="coordination">
-          <div><span class="card-icon green"></span><h2>Client and Case Coordination</h2></div>
-          <p>
-            Structured coordination for businesses managing referrals, records, intake,
-            or active client files, including personal-injury support teams.
-          </p>
-          <ul>
-            <li>Referral intake and processing</li>
-            <li>Records collection and organization</li>
-            <li>Status tracking and updates</li>
-            <li>System entry and coordination support</li>
-          </ul>
-        </article>
-
-        <article class="service-row" id="operations">
-          <div><span class="card-icon pink"></span><h2>Operations and Revenue Support</h2></div>
-          <p>
-            Improve visibility, accountability, and follow-through across the work
-            that keeps revenue moving.
-          </p>
-          <ul>
-            <li>Case or workflow lifecycle tracking</li>
-            <li>Payment and follow-up support</li>
-            <li>Reporting and analytics</li>
-            <li>Spreadsheet systems and optimization</li>
-          </ul>
-        </article>
-
-        <article class="service-row" id="automation">
-          <div><span class="card-icon dark"></span><h2>Automation and Workflow Development</h2></div>
-          <p>
-            Reduce repetitive work with practical systems that improve consistency
-            and stay manageable as you grow.
-          </p>
-          <ul>
-            <li>Advanced spreadsheet automation</li>
-            <li>Custom workflow tools and trackers</li>
-            <li>Process cleanup and optimization</li>
-            <li>Ongoing system improvements</li>
-          </ul>
-        </article>
+        <div class="blog-grid">
+          <article class="blog-card">
+            <div><span class="card-icon blue"></span><p class="post-meta">Core Support · 4 min read</p></div>
+            <h3>What to delegate first when your inbox starts running the day.</h3>
+            <p>Start with recurring admin tasks, follow-ups, scheduling, and client communication that do not require your constant attention.</p>
+          </article>
+          <article class="blog-card">
+            <div><span class="card-icon green"></span><p class="post-meta">Client Coordination · 5 min read</p></div>
+            <h3>How cleaner follow-ups create a better client experience.</h3>
+            <p>Simple trackers, clear ownership, and consistent status updates can make client-facing work feel calmer and more dependable.</p>
+          </article>
+          <article class="blog-card">
+            <div><span class="card-icon pink"></span><p class="post-meta">Operations · 7 min read</p></div>
+            <h3>Why small teams need workflow visibility before they need more tools.</h3>
+            <p>Before adding another platform, map the handoffs, delays, and manual steps that are hiding inside the current process.</p>
+          </article>
+          <article class="blog-card">
+            <div><span class="card-icon dark"></span><p class="post-meta">Automation · 6 min read</p></div>
+            <h3>Automation works best after the process is clear.</h3>
+            <p>Useful automation starts with repeatable steps, clean data, and a human support path for anything that needs judgment.</p>
+          </article>
+          <article class="blog-card">
+            <div><span class="card-icon blue"></span><p class="post-meta">Remote Support · 3 min read</p></div>
+            <h3>How to prepare your assistant for a smoother first week.</h3>
+            <p>A quick guide to access, priorities, response windows, and working documents that help support begin with less friction.</p>
+          </article>
+          <article class="blog-card">
+            <div><span class="card-icon green"></span><p class="post-meta">Systems · 5 min read</p></div>
+            <h3>Spreadsheet systems that keep operations visible.</h3>
+            <p>Well-designed trackers can turn scattered updates into useful visibility for owners, assistants, and client-facing teams.</p>
+          </article>
+        </div>
       </section>
 
       <section class="section cta-section slim">
-        <h2>Need more capacity without a full in-house hire?</h2>
+        <p class="eyebrow">Need help applying this?</p>
+        <h2>Turn these ideas into a support plan for your business.</h2>
         <a class="button primary" href="contact.html">Book a Free Consultation</a>
       </section>
     </main>

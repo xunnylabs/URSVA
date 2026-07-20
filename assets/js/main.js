@@ -18,6 +18,7 @@ const pageLinks = [
   { label: "Services", href: `${linkPrefix}services.html`, key: "services" },
   { label: "How It Works", href: `${linkPrefix}how-it-works.html`, key: "how-it-works" },
   { label: "Pricing", href: `${linkPrefix}pricing.html`, key: "pricing" },
+  { label: "Blog", href: `${linkPrefix}blog.html`, key: "blog" },
   { label: "Contact", href: `${linkPrefix}contact.html`, key: "contact" },
 ];
 
@@ -27,6 +28,7 @@ const getActivePageKey = () => {
   if (path.includes("services.html")) return "services";
   if (path.includes("how-it-works.html")) return "how-it-works";
   if (path.includes("pricing.html")) return "pricing";
+  if (path.includes("blog.html")) return "blog";
   if (path.includes("contact.html")) return "contact";
   return "home";
 };
@@ -156,67 +158,60 @@ document.querySelectorAll("[data-hero-tabs]").forEach((tabGroup) => {
   }
 });
 
-document.querySelectorAll(".site-header .site-nav").forEach((navElement) => {
-  let pill = navElement.querySelector(".nav-glass-pill");
+const scrollHeroStages = Array.from(document.querySelectorAll("[data-scroll-hero]"));
 
-  if (!pill) {
-    pill = document.createElement("span");
-    pill.className = "nav-glass-pill";
-    pill.setAttribute("aria-hidden", "true");
-    navElement.prepend(pill);
-  }
+if (scrollHeroStages.length) {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let scrollFrame;
 
-  const navLinks = navElement.querySelectorAll(":scope > a, :scope > .nav-item > .nav-link");
-  const activeLink = navElement.querySelector(":scope > a.active, :scope > .nav-item > .nav-link.active") || navLinks[0];
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  const easeOut = (value) => 1 - Math.pow(1 - value, 3);
 
-  if (!pill || !navLinks.length || !activeLink) {
-    return;
-  }
+  const updateScrollHero = () => {
+    scrollFrame = undefined;
 
-  const movePillTo = (target) => {
-    const navRect = navElement.getBoundingClientRect();
-    const targetRect = target.getBoundingClientRect();
+    scrollHeroStages.forEach((stage) => {
+      const hero = stage.closest(".stellar-hero");
 
-    pill.style.top = `${targetRect.top - navRect.top}px`;
-    pill.style.width = `${targetRect.width}px`;
-    pill.style.height = `${targetRect.height}px`;
-    pill.style.opacity = "1";
-    pill.style.transform = `translate3d(${targetRect.left - navRect.left}px, 0, 0)`;
+      if (!hero) {
+        return;
+      }
+
+      if (prefersReducedMotion) {
+        hero.style.setProperty("--hero-image-opacity", "1");
+        hero.style.setProperty("--hero-image-y", "0px");
+        hero.style.setProperty("--hero-image-scale", "1");
+        hero.style.setProperty("--hero-caption-opacity", "1");
+        hero.style.setProperty("--hero-caption-y", "0px");
+        return;
+      }
+
+      const heroStart = hero.offsetTop;
+      const viewport = window.innerHeight || 1;
+      const rawProgress = clamp((window.scrollY - heroStart) / (viewport * 0.58), 0, 1);
+      const imageProgress = easeOut(rawProgress);
+      const captionProgress = easeOut(clamp((rawProgress - 0.34) / 0.66, 0, 1));
+
+      hero.style.setProperty("--hero-image-opacity", String(clamp(rawProgress * 1.2, 0, 1)));
+      hero.style.setProperty("--hero-image-y", `${Math.round((1 - imageProgress) * 70)}px`);
+      hero.style.setProperty("--hero-image-scale", String(0.96 + imageProgress * 0.04));
+      hero.style.setProperty("--hero-caption-opacity", String(captionProgress));
+      hero.style.setProperty("--hero-caption-y", `${Math.round((1 - captionProgress) * 24)}px`);
+    });
   };
 
-  const returnToActive = () => movePillTo(activeLink);
-
-  window.setTimeout(returnToActive, 0);
-  window.addEventListener("resize", returnToActive);
-
-  navLinks.forEach((link) => {
-    link.addEventListener("pointerenter", () => movePillTo(link));
-    link.addEventListener("mouseenter", () => movePillTo(link));
-    link.addEventListener("focus", () => movePillTo(link));
-  });
-
-  navElement.addEventListener("pointerleave", returnToActive);
-  navElement.addEventListener("mouseleave", returnToActive);
-  navElement.addEventListener("pointerover", (event) => {
-    const link = event.target.closest("a");
-    if (link && navElement.contains(link)) {
-      movePillTo(link);
+  const requestScrollHeroUpdate = () => {
+    if (scrollFrame) {
+      return;
     }
-  });
-  navElement.addEventListener("mouseover", (event) => {
-    const link = event.target.closest("a");
-    if (link && navElement.contains(link)) {
-      movePillTo(link);
-    }
-  });
-  navElement.addEventListener("focusout", () => {
-    window.setTimeout(() => {
-      if (!navElement.contains(document.activeElement)) {
-        returnToActive();
-      }
-    }, 0);
-  });
-});
+
+    scrollFrame = window.requestAnimationFrame(updateScrollHero);
+  };
+
+  updateScrollHero();
+  window.addEventListener("scroll", requestScrollHeroUpdate, { passive: true });
+  window.addEventListener("resize", requestScrollHeroUpdate);
+}
 
 document.querySelectorAll(".services-menu").forEach((menu) => {
   let closeTimer;
