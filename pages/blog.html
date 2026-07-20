@@ -20,7 +20,7 @@
     />
     <link rel="stylesheet" href="../assets/css/styles.css" />
   </head>
-  <body>
+  <body class="blog-placeholder-page">
     <header class="site-header">
       <a class="brand" href="../index.html" aria-label="URSVA home">
         <img src="../assets/images/ursva-logo.png" alt="URSVA logo" />
@@ -31,12 +31,12 @@
       </button>
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="../index.html">Home</a>
-        <div class="nav-item services-menu">
+        <div class="nav-item nav-dropdown services-menu">
           <a class="nav-link has-menu" href="services.html">Services</a>
           <div class="mega-menu" aria-label="Services menu">
             <div class="mega-menu-header">
-              <h2>Getting Our Services</h2>
-              <p>Choose which services you need for your team.</p>
+              <h2>Services</h2>
+              <p>Choose support, process, and pricing details for your team.</p>
             </div>
             <div class="mega-service-grid">
               <a class="mega-service-link" href="services.html#core-support">
@@ -59,106 +59,145 @@
                 <span><strong>Workflow Automation</strong><small>Custom trackers, spreadsheets, and process cleanup.</small></span>
                 <em></em>
               </a>
+              <a class="mega-service-link priority-link process-link" href="how-it-works.html">
+                <span class="mini-icon blue"></span>
+                <span><strong>How It Works</strong><small>See our onboarding and support process.</small></span>
+                <em></em>
+              </a>
+              <a class="mega-service-link priority-link pricing-link" href="pricing.html">
+                <span class="mini-icon green"></span>
+                <span><strong>Pricing</strong><small>Review plans that scale with your operations.</small></span>
+                <em></em>
+              </a>
             </div>
           </div>
         </div>
-        <a href="how-it-works.html">How It Works</a>
-        <a href="pricing.html">Pricing</a>
-        <a class="active" href="blog.html">Blog</a>
-        <a href="contact.html">Contact</a>
+        <div class="nav-item nav-dropdown resources-menu">
+          <a class="nav-link active has-menu" href="blog.html">Resources</a>
+          <div class="mega-menu compact" aria-label="Resources menu">
+            <div class="mega-menu-header">
+              <h2>Resources</h2>
+              <p>Helpful answers, proof points, and practical operations notes.</p>
+            </div>
+            <div class="mega-service-grid">
+              <a class="mega-service-link" href="faq.html">
+                <span class="mini-icon blue"></span>
+                <span><strong>FAQ</strong><small>Answers to common support and onboarding questions.</small></span>
+                <em></em>
+              </a>
+              <a class="mega-service-link" href="testimonials.html">
+                <span class="mini-icon green"></span>
+                <span><strong>Testimonials</strong><small>What clients value about structured support.</small></span>
+                <em></em>
+              </a>
+              <a class="mega-service-link" href="blog.html">
+                <span class="mini-icon pink"></span>
+                <span><strong>Blog</strong><small>Ideas for cleaner operations and smarter delegation.</small></span>
+                <em></em>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item nav-dropdown about-menu">
+          <a class="nav-link has-menu" href="about.html">About</a>
+          <div class="mega-menu compact small" aria-label="About menu">
+            <div class="mega-menu-header">
+              <h2>About</h2>
+              <p>Meet URSVA and connect with our team.</p>
+            </div>
+            <div class="mega-service-grid">
+              <a class="mega-service-link" href="about.html">
+                <span class="mini-icon blue"></span>
+                <span><strong>About Us</strong><small>Learn the purpose behind URSVA.</small></span>
+                <em></em>
+              </a>
+              <a class="mega-service-link" href="contact.html">
+                <span class="mini-icon green"></span>
+                <span><strong>Contact</strong><small>Book a consultation or send us a message.</small></span>
+                <em></em>
+              </a>
+            </div>
+          </div>
+        </div>
       </nav>
       <a class="header-cta" href="contact.html">Book Consultation</a>
     </header>
 
-    <main>
-      <section class="blog-hero">
-        <div class="blog-hero-copy">
-          <p class="eyebrow">URSVA Blog</p>
-          <h1>Ideas for cleaner operations, calmer teams, and smarter support.</h1>
+    <main class="blog-placeholder-main">
+      <section class="blog-empty-hero" aria-labelledby="blog-empty-title">
+        <div class="blog-empty-visual" aria-hidden="true">
+          <div class="robot-orbit robot-orbit-one"></div>
+          <div class="robot-orbit robot-orbit-two"></div>
+          <svg class="robot-hand" viewBox="0 0 520 420" role="img" aria-label="">
+            <defs>
+              <linearGradient id="robotPalm" x1="84" x2="386" y1="334" y2="94" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3c7dc2" />
+                <stop offset="0.52" stop-color="#39a331" />
+                <stop offset="1" stop-color="#f742a7" />
+              </linearGradient>
+              <linearGradient id="robotFinger" x1="120" x2="344" y1="136" y2="56" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#edf7ff" />
+                <stop offset="0.48" stop-color="#91c9ff" />
+                <stop offset="1" stop-color="#fbb0dd" />
+              </linearGradient>
+            </defs>
+            <path class="robot-glow-path" d="M85 315c62-21 100-63 136-113 36-49 84-89 163-95" />
+            <g class="robot-wrist">
+              <path d="M76 336c-12 26 1 58 29 69l88 35c26 10 56-2 68-27l14-30-182-72-17 25Z" fill="#0a101b" />
+              <path d="M88 315l190 75" fill="none" stroke="url(#robotPalm)" stroke-width="18" stroke-linecap="round" />
+            </g>
+            <g class="robot-palm">
+              <path d="M174 180c34-46 100-54 145-17l56 46c23 19 28 52 12 78l-46 76c-16 26-48 37-77 27l-116-40c-31-11-48-45-38-76l13-41c9-26 25-35 51-53Z" fill="#111827" />
+              <path d="M174 180c34-46 100-54 145-17l56 46c23 19 28 52 12 78l-46 76c-16 26-48 37-77 27l-116-40c-31-11-48-45-38-76l13-41c9-26 25-35 51-53Z" fill="url(#robotPalm)" opacity=".23" />
+              <circle cx="260" cy="264" r="52" fill="#05070d" stroke="rgba(255,255,255,.34)" stroke-width="3" />
+              <circle cx="260" cy="264" r="18" fill="#8dc2ff" opacity=".82" />
+            </g>
+            <g class="robot-fingers" fill="url(#robotFinger)">
+              <rect x="184" y="62" width="42" height="148" rx="21" transform="rotate(-18 205 136)" />
+              <rect x="245" y="42" width="42" height="168" rx="21" transform="rotate(-7 266 126)" />
+              <rect x="308" y="56" width="42" height="156" rx="21" transform="rotate(8 329 134)" />
+              <rect x="363" y="96" width="42" height="128" rx="21" transform="rotate(24 384 160)" />
+              <rect x="111" y="205" width="132" height="40" rx="20" transform="rotate(26 177 225)" />
+            </g>
+            <g class="robot-joints" fill="#05070d" stroke="rgba(255,255,255,.42)" stroke-width="3">
+              <circle cx="205" cy="154" r="15" />
+              <circle cx="268" cy="150" r="15" />
+              <circle cx="329" cy="158" r="15" />
+              <circle cx="382" cy="184" r="13" />
+            </g>
+          </svg>
+        </div>
+
+        <div class="blog-empty-copy">
+          <p class="blog-lost-text">The blog workspace is being assembled...</p>
+          <div class="blog-title-wrap">
+            <span class="blog-deco blog-deco-spark" aria-hidden="true">✦</span>
+            <h1 id="blog-empty-title">Insights are almost ready.</h1>
+            <span class="blog-deco blog-deco-dot" aria-hidden="true"></span>
+          </div>
           <p>
-            Practical articles on virtual assistant support, client coordination,
-            workflow cleanup, and automation for lean service businesses.
+            We are preparing practical notes on <mark>delegation</mark>,
+            client coordination, operations support, and <mark>automation</mark>
+            for teams that want reliable capacity without overhiring.
           </p>
-        </div>
 
-        <aside class="blog-hero-card" aria-label="Featured blog focus">
-          <span class="mini-icon blue"></span>
-          <p>Featured Focus</p>
-          <h2>Scale without overhiring</h2>
-          <span>
-            Learn what to delegate, what to automate, and how to build support
-            systems before the work gets messy.
-          </span>
-        </aside>
-      </section>
-
-      <section class="section blog-section">
-        <div class="blog-toolbar" aria-label="Blog categories">
-          <span>All Articles</span>
-          <span>Core Support</span>
-          <span>Coordination</span>
-          <span>Operations</span>
-          <span>Automation</span>
-        </div>
-
-        <article class="featured-post">
-          <div class="featured-post-media">
-            <span class="mini-icon pink"></span>
-            <div>
-              <p>Latest Insight</p>
-              <strong>Operations Notes</strong>
-            </div>
+          <div class="blog-empty-cards" aria-label="Helpful links while the blog is being finalized">
+            <a class="blog-empty-card" href="../index.html">
+              <span class="blog-card-orb" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1v-9.5Z" /></svg>
+              </span>
+              <span><strong>Main Page</strong><small>Back where it all begins.</small></span>
+              <em aria-hidden="true">›</em>
+            </a>
+            <a class="blog-empty-card" href="services.html">
+              <span class="blog-card-orb green" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M4 5h7v7H4V5Zm9 0h7v7h-7V5ZM4 14h7v5H4v-5Zm9 0h7v5h-7v-5Z" /></svg>
+              </span>
+              <span><strong>Explore Services</strong><small>See what URSVA can support now.</small></span>
+              <em aria-hidden="true">›</em>
+            </a>
           </div>
-          <div class="featured-post-copy">
-            <p class="post-meta">Operations Support · 6 min read</p>
-            <h2>How to know when your business needs support before another hire.</h2>
-            <p>
-              If work is moving only because you remember every detail, your
-              operations are already asking for structure. Here are the signs
-              that support, coordination, or workflow cleanup should come next.
-            </p>
-            <a class="text-link" href="contact.html">Talk through your support needs</a>
-          </div>
-        </article>
-
-        <div class="blog-grid">
-          <article class="blog-card">
-            <div><span class="card-icon blue"></span><p class="post-meta">Core Support · 4 min read</p></div>
-            <h3>What to delegate first when your inbox starts running the day.</h3>
-            <p>Start with recurring admin tasks, follow-ups, scheduling, and client communication that do not require your constant attention.</p>
-          </article>
-          <article class="blog-card">
-            <div><span class="card-icon green"></span><p class="post-meta">Client Coordination · 5 min read</p></div>
-            <h3>How cleaner follow-ups create a better client experience.</h3>
-            <p>Simple trackers, clear ownership, and consistent status updates can make client-facing work feel calmer and more dependable.</p>
-          </article>
-          <article class="blog-card">
-            <div><span class="card-icon pink"></span><p class="post-meta">Operations · 7 min read</p></div>
-            <h3>Why small teams need workflow visibility before they need more tools.</h3>
-            <p>Before adding another platform, map the handoffs, delays, and manual steps that are hiding inside the current process.</p>
-          </article>
-          <article class="blog-card">
-            <div><span class="card-icon dark"></span><p class="post-meta">Automation · 6 min read</p></div>
-            <h3>Automation works best after the process is clear.</h3>
-            <p>Useful automation starts with repeatable steps, clean data, and a human support path for anything that needs judgment.</p>
-          </article>
-          <article class="blog-card">
-            <div><span class="card-icon blue"></span><p class="post-meta">Remote Support · 3 min read</p></div>
-            <h3>How to prepare your assistant for a smoother first week.</h3>
-            <p>A quick guide to access, priorities, response windows, and working documents that help support begin with less friction.</p>
-          </article>
-          <article class="blog-card">
-            <div><span class="card-icon green"></span><p class="post-meta">Systems · 5 min read</p></div>
-            <h3>Spreadsheet systems that keep operations visible.</h3>
-            <p>Well-designed trackers can turn scattered updates into useful visibility for owners, assistants, and client-facing teams.</p>
-          </article>
         </div>
-      </section>
-
-      <section class="section cta-section slim">
-        <p class="eyebrow">Need help applying this?</p>
-        <h2>Turn these ideas into a support plan for your business.</h2>
-        <a class="button primary" href="contact.html">Book a Free Consultation</a>
       </section>
     </main>
 
@@ -188,9 +227,8 @@
           <div>
             <h2>Quick Links</h2>
             <a href="how-it-works.html#onboarding">Our Process</a>
-            <a href="services.html#core-support">Core Support</a>
-            <a href="services.html#coordination">Client Coordination</a>
-            <a href="services.html#automation">Workflow Automation</a>
+            <a href="faq.html">FAQ</a>
+            <a href="about.html">About Us</a>
           </div>
           <div>
             <h2>Contact Us</h2>

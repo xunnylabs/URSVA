@@ -268,7 +268,7 @@ document.querySelectorAll("#virtual-assistant-hero-root").forEach((rootElement) 
       images: {
         day: rootElement.dataset.dayImage || "assets/images/ursva-assistant-day-hero.jpeg",
         sunset: rootElement.dataset.sunsetImage || "assets/images/ursva-assistant-sunset-hero.jpeg",
-        night: rootElement.dataset.nightImage || "assets/images/ursva-assistant-night-hero.jpeg",
+        night: rootElement.dataset.nightImage || "assets/images/ursva-assistant-night-hero-hd-v2.jpeg",
       },
     })
   );

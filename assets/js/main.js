@@ -16,20 +16,21 @@ const homeHref = isPagesPath ? "../index.html" : "index.html";
 const pageLinks = [
   { label: "Home", href: homeHref, key: "home" },
   { label: "Services", href: `${linkPrefix}services.html`, key: "services" },
-  { label: "How It Works", href: `${linkPrefix}how-it-works.html`, key: "how-it-works" },
-  { label: "Pricing", href: `${linkPrefix}pricing.html`, key: "pricing" },
-  { label: "Blog", href: `${linkPrefix}blog.html`, key: "blog" },
-  { label: "Contact", href: `${linkPrefix}contact.html`, key: "contact" },
+  { label: "Resources", href: `${linkPrefix}blog.html`, key: "resources" },
+  { label: "About", href: `${linkPrefix}about.html`, key: "about" },
 ];
 
 const getActivePageKey = () => {
   const path = window.location.pathname;
 
   if (path.includes("services.html")) return "services";
-  if (path.includes("how-it-works.html")) return "how-it-works";
-  if (path.includes("pricing.html")) return "pricing";
-  if (path.includes("blog.html")) return "blog";
-  if (path.includes("contact.html")) return "contact";
+  if (path.includes("how-it-works.html")) return "services";
+  if (path.includes("pricing.html")) return "services";
+  if (path.includes("blog.html")) return "resources";
+  if (path.includes("faq.html")) return "resources";
+  if (path.includes("testimonials.html")) return "resources";
+  if (path.includes("about.html")) return "about";
+  if (path.includes("contact.html")) return "about";
   return "home";
 };
 
@@ -213,12 +214,17 @@ if (scrollHeroStages.length) {
   window.addEventListener("resize", requestScrollHeroUpdate);
 }
 
-document.querySelectorAll(".services-menu").forEach((menu) => {
+document.querySelectorAll(".nav-dropdown").forEach((menu) => {
   let closeTimer;
   const trigger = menu.querySelector(".nav-link");
 
   const openMenu = () => {
     window.clearTimeout(closeTimer);
+    document.querySelectorAll(".nav-dropdown").forEach((otherMenu) => {
+      if (otherMenu !== menu) {
+        otherMenu.classList.remove("menu-open", "menu-locked");
+      }
+    });
     menu.classList.add("menu-open");
   };
 
@@ -227,9 +233,8 @@ document.querySelectorAll(".services-menu").forEach((menu) => {
       return;
     }
 
-    closeTimer = window.setTimeout(() => {
-      menu.classList.remove("menu-open");
-    }, 900);
+    window.clearTimeout(closeTimer);
+    menu.classList.remove("menu-open");
   };
 
   const closeMenu = () => {
@@ -264,6 +269,13 @@ document.querySelectorAll(".services-menu").forEach((menu) => {
       event.preventDefault();
       window.clearTimeout(closeTimer);
       const shouldLock = !menu.classList.contains("menu-locked");
+
+      document.querySelectorAll(".nav-dropdown").forEach((otherMenu) => {
+        if (otherMenu !== menu) {
+          otherMenu.classList.remove("menu-open", "menu-locked");
+        }
+      });
+
       menu.classList.toggle("menu-locked", shouldLock);
       menu.classList.toggle("menu-open", shouldLock);
     });
@@ -275,7 +287,7 @@ document.querySelectorAll(".services-menu").forEach((menu) => {
 });
 
 document.addEventListener("click", (event) => {
-  document.querySelectorAll(".services-menu.menu-locked").forEach((menu) => {
+  document.querySelectorAll(".nav-dropdown.menu-locked").forEach((menu) => {
     if (!menu.contains(event.target)) {
       menu.classList.remove("menu-open", "menu-locked");
     }
@@ -284,7 +296,7 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
-    document.querySelectorAll(".services-menu").forEach((menu) => {
+    document.querySelectorAll(".nav-dropdown").forEach((menu) => {
       menu.classList.remove("menu-open", "menu-locked");
     });
   }
@@ -314,12 +326,20 @@ document.querySelectorAll(".pricing-button, .mega-service-link, .hero .button").
     element.classList.add("is-hovering");
   });
 
-  element.addEventListener("pointermove", () => {
+  element.addEventListener("pointermove", (event) => {
     element.classList.add("is-hovering");
+
+    if (element.classList.contains("mega-service-link")) {
+      const rect = element.getBoundingClientRect();
+      element.style.setProperty("--glow-x", `${event.clientX - rect.left}px`);
+      element.style.setProperty("--glow-y", `${event.clientY - rect.top}px`);
+    }
   });
 
   element.addEventListener("pointerleave", () => {
     element.classList.remove("is-hovering");
+    element.style.removeProperty("--glow-x");
+    element.style.removeProperty("--glow-y");
   });
 });
 
