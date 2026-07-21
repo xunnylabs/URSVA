@@ -471,6 +471,116 @@ document.querySelectorAll("[data-interactive-onboarding]").forEach((section) => 
   });
 });
 
+document.querySelectorAll("[data-testimonial-carousel]").forEach((carousel) => {
+  const track = carousel.querySelector(".testimonial-carousel-track");
+  const slides = Array.from(carousel.querySelectorAll(".testimonial-slide"));
+  const prevButton = carousel.querySelector(".testimonial-prev");
+  const nextButton = carousel.querySelector(".testimonial-next");
+  const dotsContainer = carousel.querySelector(".testimonial-dots");
+
+  if (!track || !slides.length || !dotsContainer) {
+    return;
+  }
+
+  let activeIndex = 0;
+  let autoTimer;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const getSlideOffset = () => {
+    const slide = slides[0];
+    const trackStyles = window.getComputedStyle(track);
+    const parsedGap = parseFloat(trackStyles.columnGap || trackStyles.gap || "0");
+    const gap = Number.isFinite(parsedGap) ? parsedGap : 0;
+    return slide ? activeIndex * (slide.getBoundingClientRect().width + gap) : 0;
+  };
+
+  const updateTrackOffset = () => {
+    const offset = getSlideOffset() * -1;
+    track.style.setProperty("--testimonial-offset", `${offset}px`);
+    track.style.transform = `translate3d(${offset}px, 0, 0)`;
+  };
+
+  slides.forEach((slide, index) => {
+    slide.setAttribute("tabindex", "0");
+    slide.setAttribute("aria-label", `Testimonial ${index + 1} of ${slides.length}`);
+  });
+
+  const dots = slides.map((_, index) => {
+    const dot = document.createElement("button");
+    dot.className = "testimonial-dot";
+    dot.type = "button";
+    dot.setAttribute("aria-label", `Show testimonial ${index + 1}`);
+    dot.addEventListener("click", () => {
+      setActiveSlide(index);
+      restartAuto();
+    });
+    dotsContainer.appendChild(dot);
+    return dot;
+  });
+
+  const setActiveSlide = (index) => {
+    activeIndex = (index + slides.length) % slides.length;
+    updateTrackOffset();
+
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === activeIndex;
+      dot.classList.toggle("is-active", isActive);
+      dot.setAttribute("aria-current", isActive ? "true" : "false");
+    });
+  };
+
+  const goNext = () => setActiveSlide(activeIndex + 1);
+  const goPrev = () => setActiveSlide(activeIndex - 1);
+
+  const stopAuto = () => {
+    window.clearInterval(autoTimer);
+  };
+
+  const startAuto = () => {
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    stopAuto();
+    autoTimer = window.setInterval(goNext, 3000);
+  };
+
+  const restartAuto = () => {
+    stopAuto();
+    startAuto();
+  };
+
+  prevButton?.addEventListener("click", () => {
+    goPrev();
+    restartAuto();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    goNext();
+    restartAuto();
+  });
+
+  carousel.addEventListener("pointerenter", stopAuto);
+  carousel.addEventListener("pointerleave", startAuto);
+  carousel.addEventListener("focusin", stopAuto);
+  carousel.addEventListener("focusout", startAuto);
+  window.addEventListener("resize", updateTrackOffset);
+  carousel.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      goPrev();
+      restartAuto();
+    }
+
+    if (event.key === "ArrowRight") {
+      goNext();
+      restartAuto();
+    }
+  });
+
+  setActiveSlide(activeIndex);
+  startAuto();
+});
+
 if (contactForm) {
   const serviceChips = contactForm.querySelectorAll(".service-chip");
   const selectedServicesInput = contactForm.querySelector("input[name='selected_services']");

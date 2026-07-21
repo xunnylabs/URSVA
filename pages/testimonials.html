@@ -11,7 +11,7 @@
     <meta name="description" content="Read testimonials and client outcomes from URSVA virtual support, coordination, operations, and automation services." />
     <meta name="keywords" content="URSVA testimonials, virtual assistant reviews, operations support results, workflow automation client feedback" />
   </head>
-  <body>
+  <body class="testimonials-page">
     <header class="site-header">
       <a class="brand" href="../index.html" aria-label="URSVA home">
         <img src="../assets/images/ursva-logo.png" alt="URSVA logo" />
@@ -64,11 +64,80 @@
       <a class="header-cta" href="contact.html">Book Consultation</a>
     </header>
     <main>
-      <section class="page-hero compact"><p class="eyebrow">Testimonials</p><h1>Support that makes work feel calmer.</h1><p>Client feedback coming soon. For now, here are the outcomes URSVA is built to deliver for growing teams.</p></section>
-      <section class="section testimonial-grid">
-        <article class="testimonial-card liquid-glass"><span class="mini-icon blue"></span><p>“URSVA helps teams get daily admin, scheduling, and follow-ups out of the owner’s head and into a reliable support rhythm.”</p><strong>Core Support</strong></article>
-        <article class="testimonial-card liquid-glass"><span class="mini-icon green"></span><p>“Client communication becomes easier to track when ownership, updates, and next steps are organized in one clear process.”</p><strong>Client Coordination</strong></article>
-        <article class="testimonial-card liquid-glass"><span class="mini-icon pink"></span><p>“Operations feel lighter when reporting, spreadsheets, and recurring workflows are cleaned up before they become bottlenecks.”</p><strong>Operations Support</strong></article>
+      <section class="page-hero compact testimonials-hero">
+        <p class="eyebrow">Testimonials</p>
+        <h1>Support that makes work feel calmer.</h1>
+        <p>Client feedback coming soon. For now, here are the outcomes URSVA is built to deliver for growing teams.</p>
+      </section>
+
+      <section class="section testimonial-carousel-section" aria-labelledby="testimonial-carousel-title" data-testimonial-carousel>
+        <div class="testimonial-carousel-header">
+          <div>
+            <p class="eyebrow">What teams value</p>
+            <h2 id="testimonial-carousel-title">Reliable support, cleaner systems, calmer operations.</h2>
+          </div>
+          <div class="testimonial-rating" aria-label="Five star rating">
+            <span aria-hidden="true">★★★★★</span>
+            <strong>URSVA 5/5</strong>
+          </div>
+        </div>
+
+        <div class="testimonial-carousel-shell">
+          <button class="testimonial-arrow testimonial-prev" type="button" aria-label="Previous testimonial">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 5 8.5 12l7 7-1.4 1.4L5.7 12l8.4-8.4L15.5 5Z" /></svg>
+          </button>
+
+          <div class="testimonial-carousel-window">
+            <div class="testimonial-carousel-track">
+              <article class="testimonial-slide liquid-glass">
+                <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+                <p>URSVA helps teams get daily admin, scheduling, and follow-ups out of the owner’s head and into a reliable support rhythm.</p>
+                <div class="testimonial-author">
+                  <span class="testimonial-avatar blue">CS</span>
+                  <div><strong>Core Support</strong><small>Daily admin and follow-through</small></div>
+                </div>
+              </article>
+              <article class="testimonial-slide liquid-glass">
+                <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+                <p>Client communication becomes easier to track when ownership, updates, and next steps are organized in one clear process.</p>
+                <div class="testimonial-author">
+                  <span class="testimonial-avatar green">CC</span>
+                  <div><strong>Client Coordination</strong><small>Communication and tracking</small></div>
+                </div>
+              </article>
+              <article class="testimonial-slide liquid-glass">
+                <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+                <p>Operations feel lighter when reporting, spreadsheets, and recurring workflows are cleaned up before they become bottlenecks.</p>
+                <div class="testimonial-author">
+                  <span class="testimonial-avatar pink">OS</span>
+                  <div><strong>Operations Support</strong><small>Visibility and workflow clarity</small></div>
+                </div>
+              </article>
+              <article class="testimonial-slide liquid-glass">
+                <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+                <p>Workflow automation gives smaller teams a practical way to reduce repetition without losing the human judgment that clients still need.</p>
+                <div class="testimonial-author">
+                  <span class="testimonial-avatar purple">WA</span>
+                  <div><strong>Workflow Automation</strong><small>Systems, trackers, and process cleanup</small></div>
+                </div>
+              </article>
+              <article class="testimonial-slide liquid-glass">
+                <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+                <p>Structured support makes it easier to scale capacity without hiring too soon, overloading the team, or letting details fall through.</p>
+                <div class="testimonial-author">
+                  <span class="testimonial-avatar blue">UR</span>
+                  <div><strong>Scalable Operations</strong><small>Reliable capacity without overhiring</small></div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button class="testimonial-arrow testimonial-next" type="button" aria-label="Next testimonial">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 19 7-7-7-7 1.4-1.4 8.4 8.4-8.4 8.4L8.5 19Z" /></svg>
+          </button>
+        </div>
+
+        <div class="testimonial-dots" aria-label="Testimonial slides"></div>
       </section>
     </main>
     <footer class="site-footer liquid-glass">
